@@ -43,8 +43,10 @@ class AloneMemory {
     this.memory[slotName] = {};
   }
 
-  addData({ collectionName, settings }) {
-    this.memory.data[collectionName] = new Cache(settings);
+  addData(settings) {
+    if (!this.memory.data[settings.collectionName]) {
+      this.memory.data[settings.collectionName] = new Cache(settings);
+    }
   }
 
   removeData({ collectionName }) {
